@@ -11,37 +11,49 @@ def compute_height(n, parents):
     max_height = 0
     a = 0
     # Your code here
+
+    # index = numpy.where(parents==-1)
+    maximum = (max(parents))
+    print(maximum)
+    temp = numpy.where(parents==maximum)
+    a = temp[0][0]
+    print(a)
+
     while a != -1:
-        # a = numpy.where(parents==parents[a])
         a = parents[a]
         max_height = max_height + 1
     return max_height
 
 
-
 def main():
-    # implement input form keyboard and from files
-    text = input()
-    if "I" in text:
-        n = input("Skaits: ")
-        text = input("Elementi: ")
-        arr = numpy.array(map(text.split()))
-        compute_height(n, arr)
+    # get input from the user
+    source = input().strip()
 
-    elif "F" in text:
-        failaNosaukums = input("Faila nosaukums:")
-        with open("./test/" + failaNosaukums, mode="r") as fails:
-            n = fails.readLine()
-            text = fails.read()
-        arr = numpy.array(map(text.split()))
-        compute_height(n, arr)
+    if source == "I":
+        # input from the keyboard
+        n = int(input().strip())
+        parents = numpy.array(list(map(int, input().split())))
+    elif source == "F":
+        # input from a file
+        filename = input("Enter filename (excluding 'a'): ")
+        while "a" in filename.tolower():
+            filename = input("Invalid filename. Enter filename again (excluding 'a'): ")
+        try:
+            with open("./test/{filename}") as f:
+                n = int(f.read())
+                parents = numpy.array(list(map(int, f.read().split())))
+        except FileNotFoundError:
+            print("Error: file {filename} not found")
+            return
+    else:
+        print("Invalid input source")
+        return
     
-    # let user input file name to use, don't allow file names with letter a
-    # account for github input inprecision
+    # compute the height of the tree
+    height = compute_height(n, parents)
     
-    # input number of elements
-    # input values in one variable, separate with space, split these values in an array
-    # call the function and output it's result
+    # output the result
+    print(height)
 
 
 # In Python, the default limit on recursion depth is rather low,
@@ -50,4 +62,3 @@ def main():
 sys.setrecursionlimit(10**7)  # max depth of recursion
 threading.stack_size(2**27)   # new thread will get stack of such size
 threading.Thread(target=main).start()
-
