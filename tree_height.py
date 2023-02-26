@@ -28,11 +28,11 @@ def compute_height(n, parents):
 
 def main():
     # get input from the user
-    source = input().strip()
+    source = input()
 
     if source == "I":
         # input from the keyboard
-        n = int(input().strip())
+        n = int(input())
         parents = numpy.array(list(map(int, input().split())))
     elif source == "F":
         # input from a file
