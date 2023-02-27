@@ -15,10 +15,8 @@ def compute_height(n, parents):
 
     # index = numpy.where(parents==-1)
     maximum = (max(parents))
-    print(maximum)
     temp = numpy.where(parents==maximum)
     a = temp[0][0]
-    print(a)
 
     while a != -1:
         a = parents[a]
