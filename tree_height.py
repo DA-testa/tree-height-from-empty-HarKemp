@@ -35,8 +35,8 @@ def main():
     elif source == "F":
         # input from a file
         filename = input("Enter filename: ")
-        while "a" in filename.tolower():
-            filename = input("Invalid filename. Enter filename again (excluding 'a'): ")
+#         while "a" in filename.tolower():
+#             filename = input("Invalid filename. Enter filename again (excluding 'a'): ")
         try:
             with open(filename) as f:
                 n = int(f.read())
