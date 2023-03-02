@@ -34,15 +34,15 @@ def main():
         parents = numpy.array(list(map(int, input().split())))
     elif source == "F":
         # input from a file
-        filename = input("Enter filename (excluding 'a'): ")
+        filename = input("Enter filename: ")
         while "a" in filename.tolower():
             filename = input("Invalid filename. Enter filename again (excluding 'a'): ")
         try:
-            with open("./test/{filename}") as f:
+            with open(filename) as f:
                 n = int(f.read())
                 parents = numpy.array(list(map(int, f.read().split())))
         except FileNotFoundError:
-            print("Error: file {filename} not found")
+            print("file not found")
             return
     else:
         print("Invalid input source")
