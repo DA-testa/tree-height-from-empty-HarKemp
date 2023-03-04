@@ -29,12 +29,12 @@ def compute_height(n, parents):
 def main():
     # get input from the user
     inputType = input()
-    n = 0
 
     # input from the keyboard
     if "I" in inputType:
         n = int(input())
         parents = numpy.array(list(map(int, input().split())))
+        height = compute_height(n, parents)
 
     # input from a file
     elif "F" in inputType:
@@ -48,6 +48,7 @@ def main():
                 with open(filename) as f:
                     n = int(f.readline().strip())
                     parents = numpy.array(list(map(int, f.readline().strip().split())))
+                    height = compute_height(n, parents)
             except FileNotFoundError:
                 print("file not found")
                 return
@@ -55,8 +56,6 @@ def main():
         print("Invalid input source")
         return
     
-    # compute the height of the tree
-    height = compute_height(n, parents)
     
     # output the result
     print(height)
