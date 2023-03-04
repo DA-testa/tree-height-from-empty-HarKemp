@@ -3,37 +3,6 @@ import sys
 import threading
 import numpy
 
-# def compute_height(n, parents):
-
-#     used = numpy.zeros(n)
-#     def height(i):
-#         if used[i] != 0:
-#             return used[i]
-#         if parents[i] == -1:
-#             used[i] = 1
-#         else:
-#             used[i] = height(parents[i]) + 1
-#         return used[i]
-    
-#     for i in range(n):
-#         height(i)
-#     return int(max(used))
-
-# def compute_height(n, parents):
-#     levels = [0] * n
-
-#     for i in range(n):
-#         height = 0
-#         while i != -1:
-#             if levels[i] != 0:
-#                 height += levels[i]
-#                 break
-#             height += 1
-#             i = parents[i]
-#         levels[i] = height
-
-#     return max(levels)
-
 def compute_height(n, parents):
     for i in range(n):
         if parents[i] == -1:
@@ -60,6 +29,7 @@ def compute_height(n, parents):
 def main():
     # get input from the user
     inputType = input()
+    n = 0
 
     # input from the keyboard
     if "I" in inputType:
