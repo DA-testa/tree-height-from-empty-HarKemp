@@ -44,7 +44,7 @@ def main():
             return
         if "test/" not in filename:
             filename = "test/" + filename
-        else:
+        if "test/" in filename:
             try:
                 with open(filename) as f:
                     n = int(f.readline().strip())
