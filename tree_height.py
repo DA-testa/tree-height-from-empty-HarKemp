@@ -29,7 +29,7 @@ def compute_height(n, parents):
 def main():
     # get input from the user
     inputType = input()
-    height = 0
+    height = 1
 
     # input from the keyboard
     if "I" in inputType:
