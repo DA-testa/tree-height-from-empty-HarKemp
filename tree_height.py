@@ -6,18 +6,21 @@ import numpy
 def compute_height(n, parents):
 
     used = numpy.zeros(n)
+    levels = numpy.zeros(n)
     def height(i):
-        if used[i] != 0:
-            return used[i]
+        if used[i] == 1:
+            return levels[i]
         if parents[i] == -1:
+            levels[i] = 1
             used[i] = 1
         else:
-            used[i] = height(parents[i]) + 1
-        return used[i]
+            levels[i] = height(parents[i]) + 1
+            used[i] = 1
+        return levels[i]
     
     for i in range(n):
         height(i)
-    return int(max(used))
+    return int(max(levels))
 
 def main():
     # get input from the user
